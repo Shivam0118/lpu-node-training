@@ -14,7 +14,7 @@ app.use(express.json())
 //}
 //Get, POST, PUT, DELETE API
 
-function addNums(req, res){
+function mulNums(req, res){
     if(req.query.a==null || req.query.b==null){
         res.status(400).send({error: "Numbers are given null"})
     }
@@ -22,7 +22,7 @@ function addNums(req, res){
     const b = Number(req.query.b);
     const name = req.query.name;
     console.log(name);
-    const sum = a+b;
+    const sum = a*b;
     res.status(200).send(
         {
             "sum": sum
@@ -30,7 +30,7 @@ function addNums(req, res){
     );
 
 }
-app.get('/addTwoNums',addNums)
+app.get('/multiplyTwoNums',mulNums)
 
 // Sockets/Port numbers
 // IP + Port = Socket
@@ -38,5 +38,5 @@ const port = 3001
 const ip = "localhost"
 
 app.listen(port, ip, function(){
-    console.log("I am listening");
+    console.log("Hi,I am listening");
 })
